@@ -2,7 +2,6 @@
 # 🛍️ Flutter E-Commerce App
 
 A modern **Flutter** e-commerce application built with **Riverpod** for state management.
-
 ---
 
 ## 🚀 Features
