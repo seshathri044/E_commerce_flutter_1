@@ -33,6 +33,7 @@ A modern **Flutter** e-commerce application built with **Riverpod** for state ma
 ```bash
 git clone https://github.com/<your-username>/flutter_e_commerce.git
 cd flutter_e_commerce
+
 ```
 
 Install dependencies
@@ -58,5 +59,3 @@ lib/
 Pull requests are welcome!
 For major changes, open an issue first to discuss what you’d like to change.
 
-git clone https://github.com/<your-username>/flutter_e_commerce.git
-cd flutter_e_commerce
