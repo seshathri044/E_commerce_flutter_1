@@ -21,6 +21,8 @@ class DetialPage extends StatelessWidget {
       
         ),
         body: Padding(
+
+          
           padding: const EdgeInsets.all(25.0),
           child: SingleChildScrollView(
             child: Column(
