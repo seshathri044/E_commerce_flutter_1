@@ -1,24 +1,35 @@
-name: flutter_e_commerce
-description: "A new Flutter project."
-publish_to: 'none'
+name: Deploy Flutter Web to GitHub Pages
 
-version: 1.0.0+1
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
-environment:
-  sdk: '>=3.8.0 <4.0.0'
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
-  flutter_riverpod: ^2.6.1
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^5.0.0
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.22.2" # Supports Dart 3.8.1
 
-flutter:
-  uses-material-design: true
+      - name: Disable Flutter analytics
+        run: flutter config --no-analytics
 
+      - name: Install dependencies
+        run: flutter pub get
 
+      - name: Build Flutter web
+        run: flutter build web --release --base-href /flutter_e_commerce/
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
